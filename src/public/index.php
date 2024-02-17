@@ -1,7 +1,17 @@
 <?php 
 
-phpinfo();
+declare(strict_types=1);
 
-echo '<pre>';
-print_r($_SERVER);
-echo '</pre>';
+require_once '../Transaction.php';
+
+// Classes & Objects
+$transaction = (new Transaction(100, 'Transaction 1'))
+    ->addTax(8)
+    ->applyDiscount(10);
+
+$amount = $transaction->getAmount();
+
+unset($transaction);
+
+var_dump($amount);
+
