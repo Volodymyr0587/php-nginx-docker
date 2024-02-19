@@ -1,18 +1,14 @@
 <?php
 
-spl_autoload_register(
-    function ($class) {
-        $path = __DIR__ . '/../' . lcfirst(str_replace('\\', '/', $class)) . '.php';
-
-        if (file_exists($path)) {
-            require $path;
-        }
-    }
-);
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\PaymentGateway\Paddle\Transaction;
+use Ramsey\Uuid\UuidFactory;
 
 $paddleTransaction = new Transaction();
 
-var_dump($paddleTransaction);
+$id = new UuidFactory();
 
+echo $id->uuid4();
+
+var_dump($paddleTransaction);
