@@ -1,14 +1,14 @@
 <?php 
 
-declare(strict_types=1);
+spl_autoload_register(function($class) {
+    $path = __DIR__ . '/../' . lcfirst(str_replace('\\', '/', $class)) . '.php';
 
-require_once '../PaymentProfile.php';
-require_once '../Customer.php';
-require_once '../Transaction.php';
+    require $path;
+});
 
-// Classes & Objects
-$transaction = new Transaction(5, 'Test');
+use App\PaymentGateway\Paddle\Transaction;
 
-echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';
+$paddleTransaction = new Transaction();
 
+var_dump($paddleTransaction);
 
