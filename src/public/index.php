@@ -1,9 +1,13 @@
 <?php
 
-use App\PaymentGateway\Paddle\Transaction;
+use App\Toaster;
+use App\ToasterPro;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$transaction = new Transaction(25);
+$toaster = new ToasterPro();
 
-$transaction->process();
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->addSlice('bread');
+$toaster->toastBagel();
