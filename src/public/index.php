@@ -1,13 +1,14 @@
 <?php
 
-use App\Toaster;
-use App\ToasterPro;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$toaster = new ToasterPro();
+$fields = [
+    new App\Abstract\Text('textField'),
+    new App\Abstract\Checkbox('checkboxField'),
+    new App\Abstract\Radio('radioField'),
+];
 
-$toaster->addSlice('bread');
-$toaster->addSlice('bread');
-$toaster->addSlice('bread');
-$toaster->toastBagel();
+foreach ($fields as $field) {
+    echo $field->render() . '<br />';
+}
